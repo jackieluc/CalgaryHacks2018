@@ -23,7 +23,6 @@ import {
   Table
 } from 'reactstrap';
 import Widget02 from '../Widgets/Widget02';
-import fetch from 'node-fetch';
 
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
@@ -341,7 +340,7 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    fetch('http://52.53.149.194:8000/api/health')
+    fetch('http://52.53.149.194:8000/api/health?react')
       .then(res => res.json())
       .then(json => this.setState({ health: json }));
   }
@@ -353,20 +352,19 @@ class Dashboard extends Component {
           <Col xs="12" sm="8">
             This is the picture
           </Col>
-          
-          {this.state.health ? 
+          {this.state && this.state.health ? 
             <Col xs="12" sm="4">
               <Row><Col xs="12">
-                <Widget02 header="Temperature" mainText="Income" icon="fa fa-thermometer-full" color="primary" footer link="#/charts"/>
+                <Widget02 header="Temperature" mainText="Status: OK" icon="fa fa-thermometer-full" color="primary" footer link="#/charts" value={this.state.health.temperature.result.toFixed(0)} />
               </Col></Row>
               <Row><Col xs="12">
-                <Widget02 header="Gas" mainText="Income" icon="fa fa-laptop" color="info" footer/>
+                <Widget02 header="Air Quality" mainText="Status: OK" icon="carbonMonoxide.svg" color="info" value={this.state.health.gas.result.toFixed(2)} footer />
               </Col></Row>
               <Row><Col xs="12">
-                <Widget02 header="Motion" mainText="Income" icon="fa fa-moon-o" color="warning" footer/>
+                <Widget02 header="Motion" mainText="Status: OK" icon="handWaving" color="warning" value={this.state.health.motion.result} footer />
               </Col></Row>
               <Row><Col sm="12">
-                <Widget02 header="Humidity" mainText="Income" icon="fa fa-bell" color="danger" footer/>
+                <Widget02 header="Humidity" mainText="Status: OK" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer />
               </Col></Row>
             </Col>
             : <div style={{ margin: '0 auto', paddingTop: '25%' }}>
