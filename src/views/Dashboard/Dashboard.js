@@ -347,6 +347,7 @@ class Dashboard extends Component {
     super(props);
 
     this.toggle = this.toggle.bind(this);
+    this.fetchStatuses = this.fetchStatuses.bind(this);
 
     this.state = {
       dropdownOpen: false,
@@ -359,14 +360,16 @@ class Dashboard extends Component {
       dropdownOpen: !this.state.dropdownOpen
     });
   }
+  
+  fetchStatuses() {
+    fetch('http://52.53.149.194:8000/api/health?react')
+    .then(res => res.json())
+    .then(json => this.setState({ health: json }));
+  }
 
   componentDidMount() {
-    fetch('http://52.53.149.194:8000/api/health?react')
-      .then(res => res.json())
-      .then(json => this.setState({ health: json }));
-  };
-
-
+    this.fetchStatuses();
+  }
 
   render() {
     return (
@@ -383,20 +386,29 @@ class Dashboard extends Component {
           </Col>
 
           {this.state && this.state.health ? 
-            <Col xs="12" sm="4">
-              <Row><Col xs="12">
-                <Widget02 header="Temperature" mainText="Status: OK" icon="fa fa-thermometer-full" color="primary" footer link="#/charts" value={this.state.health.temperature.result.toFixed(0)} />
-              </Col></Row>
-              <Row><Col xs="12">
-                <Widget02 header="Air Quality" mainText="Status: OK" icon="carbonMonoxide.svg" color="info" value={this.state.health.gas.result.toFixed(2)} footer />
-              </Col></Row>
-              <Row><Col xs="12">
-                <Widget02 header="Motion" mainText="Status: OK" icon="handWaving" color="warning" value={this.state.health.motion.result} footer />
-              </Col></Row>
-              <Row><Col sm="12">
-                <Widget02 header="Humidity" mainText="Status: OK" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer />
-              </Col></Row>
-            </Col>
+            !this.state.health.error ? 
+              <Col xs="12" sm="4">
+                <Row><Col xs="12">
+                  <Widget02 header="Temperature" mainText="Status: OK" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
+                </Col></Row>
+                <Row><Col xs="12">
+                  <Widget02 header="Air Quality" mainText="Status: OK" icon="carbonMonoxide.svg" color="info" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
+                </Col></Row>
+                <Row><Col xs="12">
+                  <Widget02 header="Motion" mainText="Status: OK" icon="handWaving" color="warning" value={this.state.health.motion.result} footer link="#/status-history/motion" />
+                </Col></Row>
+                <Row><Col sm="12">
+                  <Widget02 header="Humidity" mainText="Status: OK" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
+                </Col></Row>
+              </Col>
+              :
+              <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+                <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
+                <small style={{ marginLeft: '10px' }}>Unable to retrieve stauses... Retrying...</small>
+                { // try to re-fetch the statuses
+                  this.fetchStatuses()
+                }
+              </div>
             : <div style={{ margin: '0 auto', paddingTop: '25%' }}>
               <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
               <small style={{ marginLeft: '10px' }}>Loading statuses...</small>

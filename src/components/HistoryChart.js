@@ -102,10 +102,18 @@ class HistoryChart extends Component {
   constructor(props) {
     super(props);
 
+    this.props = props;
     this.onRadioBtnClick = this.onRadioBtnClick.bind(this);
 
     this.state = {
-      radioSelected: 2
+      radioSelected: 2,
+      dataPoints: null,
+      monthNames: [
+        "January", "February", "March",
+        "April", "May", "June",
+        "July", "August", "September",
+        "October", "November", "December"
+      ],
     };
   }
 
@@ -115,64 +123,83 @@ class HistoryChart extends Component {
     });
   }
 
+  fetchStatusHistory(header) {
+    fetch(`http://52.53.149.194:8000/api/get/${header}`)
+    .then(res => res.json())
+    .then(json => this.setState({ dataPoints: json }));
+  }
+
+  componentDidMount() {
+    this.fetchStatusHistory(this.props.props.location.pathname.split('/')[2]);
+  }
+
   render() {
+    const acceptedStatuses = ['temperature', 'air-quality', 'motion', 'humidity'];
+    const header = this.props.props.location.pathname.split('/')[2];
     return (
-      <Row className="justify-content-center">
-      <Col>
-        <Card>
-          <CardBody>
-            <Row>
-              <Col sm="5">
-                <CardTitle className="mb-0">Traffic</CardTitle>
-                <div className="small text-muted">November 2015</div>
-              </Col>
-              <Col sm="7" className="d-none d-sm-inline-block">
-                <Button color="primary" className="float-right"><i className="icon-cloud-download"></i></Button>
-                <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
-                  <ButtonGroup className="mr-3" aria-label="First group">
-                    <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
-                    <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
-                    <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
-                  </ButtonGroup>
-                </ButtonToolbar>
-              </Col>
-            </Row>
-            <div className="chart-wrapper" style={{height: 300 + 'px', marginTop: 40 + 'px'}}>
-              <Line data={mainChart} options={mainChartOpts} height={300}/>
+      acceptedStatuses.includes(header) ? 
+        this.state && this.state.dataPoints ? 
+          <Row className="justify-content-center">
+          <Col>
+            <Card>
+              <CardBody>
+                <Row>
+                  <Col sm="5">
+                    <CardTitle className="mb-0">{header.replace(/^[a-z]/, letter => letter.toUpperCase())} History</CardTitle>
+                    <div className="small text-muted">{`${this.state.monthNames[new Date(this.state.dataPoints.values[0].time).getMonth()]} ${new Date(this.state.dataPoints.values[0].time).getFullYear()}`}</div>
+                  </Col>
+                  <Col sm="7" className="d-none d-sm-inline-block">
+                    <Button color="primary" className="float-right"><i className="icon-cloud-download"></i></Button>
+                    <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
+                      <ButtonGroup className="mr-3" aria-label="First group">
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
+                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
+                      </ButtonGroup>
+                    </ButtonToolbar>
+                  </Col>
+                </Row>
+                <div className="chart-wrapper" style={{height: 300 + 'px', marginTop: 40 + 'px'}}>
+                  <Line data={mainChart} options={mainChartOpts} height={300}/>
+                </div>
+              </CardBody>
+              <CardFooter>
+                <ul>
+                  <li>
+                    <div className="text-muted">Visits</div>
+                    <strong>29.703 Users (40%)</strong>
+                    <Progress className="progress-xs mt-2" color="success" value="40"/>
+                  </li>
+                  <li className="d-none d-md-table-cell">
+                    <div className="text-muted">Unique</div>
+                    <strong>24.093 Users (20%)</strong>
+                    <Progress className="progress-xs mt-2" color="info" value="20"/>
+                  </li>
+                  <li>
+                    <div className="text-muted">Pageviews</div>
+                    <strong>78.706 Views (60%)</strong>
+                    <Progress className="progress-xs mt-2" color="warning" value="60"/>
+                  </li>
+                  <li className="d-none d-md-table-cell">
+                    <div className="text-muted">New Users</div>
+                    <strong>22.123 Users (80%)</strong>
+                    <Progress className="progress-xs mt-2" color="danger" value="80"/>
+                  </li>
+                  <li className="d-none d-md-table-cell">
+                    <div className="text-muted">Bounce Rate</div>
+                    <strong>Average 40.15%</strong>
+                    <Progress className="progress-xs mt-2" color="primary" value="40"/>
+                  </li>
+                </ul>
+              </CardFooter>
+            </Card>
+          </Col>
+          </Row>
+          : <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+              <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
+              <small style={{ marginLeft: '10px' }}>Loading statuses...</small>
             </div>
-          </CardBody>
-          <CardFooter>
-            <ul>
-              <li>
-                <div className="text-muted">Visits</div>
-                <strong>29.703 Users (40%)</strong>
-                <Progress className="progress-xs mt-2" color="success" value="40"/>
-              </li>
-              <li className="d-none d-md-table-cell">
-                <div className="text-muted">Unique</div>
-                <strong>24.093 Users (20%)</strong>
-                <Progress className="progress-xs mt-2" color="info" value="20"/>
-              </li>
-              <li>
-                <div className="text-muted">Pageviews</div>
-                <strong>78.706 Views (60%)</strong>
-                <Progress className="progress-xs mt-2" color="warning" value="60"/>
-              </li>
-              <li className="d-none d-md-table-cell">
-                <div className="text-muted">New Users</div>
-                <strong>22.123 Users (80%)</strong>
-                <Progress className="progress-xs mt-2" color="danger" value="80"/>
-              </li>
-              <li className="d-none d-md-table-cell">
-                <div className="text-muted">Bounce Rate</div>
-                <strong>Average 40.15%</strong>
-                <Progress className="progress-xs mt-2" color="primary" value="40"/>
-              </li>
-            </ul>
-          </CardFooter>
-        </Card>
-      </Col>
-      </Row>
+        : <div>Cannot find {this.props.props.location.pathname.split('/')[2]} history.</div>
     );
   }
 }
