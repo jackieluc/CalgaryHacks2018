@@ -24,11 +24,32 @@ import {
 } from 'reactstrap';
 import Widget02 from '../Widgets/Widget02';
 
+import house from "../../../public/img/houseIcons/House.svg"
+import day from "../../../public/img/houseIcons/Day.svg"
+import night from "../../../public/img/houseIcons/Night.svg"
+import cold from "../../../public/img/houseIcons/Cold.svg"
+import hot from "../../../public/img/houseIcons/Hot.svg"
+import smoke from "../../../public/img/houseIcons/Smoke.svg"
+import motion from "../../../public/img/houseIcons/Motion.svg"
+import flood from "../../../public/img/houseIcons/Flood.svg"
+
+
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
 const brandInfo = '#63c2de';
 const brandWarning = '#f8cb00';
 const brandDanger = '#f86c6b';
+
+
+// This is to align the SVG's correctly on the page
+const houseIcon = {
+  position:"absolute",
+  top:"0",
+  left:"15px",
+  zIndex:"1",
+  width: "80%",
+};
+
 
 // Card Chart 1
 const cardChartData1 = {
@@ -343,14 +364,22 @@ class Dashboard extends Component {
     fetch('http://52.53.149.194:8000/api/health?react')
       .then(res => res.json())
       .then(json => this.setState({ health: json }));
-  }
+  };
+
+
 
   render() {
     return (
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" sm="8">
-            This is the picture
+            {this.state && this.state.health && this.state.health.motion.result ? <img src={motion}  style= {{position:"absolute", top:"0", left:"15px", zIndex:"-1", width: "80%" }}/> : null}
+            <img src={house} style={{width:"80%"}}/>
+            {(new Date().getHours()) > 8 && (new Date().getHours()) < 18 ? <img src={day}  style= {houseIcon}/> : <img src={night}  style= {houseIcon}/> }
+            {this.state && this.state.health && this.state.health.temperature.result < 15? <img src={cold}  style= {houseIcon}/> :null }
+            {this.state && this.state.health && this.state.health.temperature.result > 27? <img src={hot}  style= {houseIcon}/> :null }
+            {this.state && this.state.health && this.state.health.gas.result > 15? <img src={smoke} style={houseIcon}/> : null }
+            {this.state && this.state.health && this.state.health.humidity.result > 50 ? <img src={flood}  style= {houseIcon}/> : null }
           </Col>
 
           {this.state && this.state.health ? 
