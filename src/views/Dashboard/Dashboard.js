@@ -349,16 +349,16 @@ class Dashboard extends Component {
           
           <Col xs="12" sm="4">
             <Row><Col xs="12">
-              <Widget02 header="Temperature" mainText="Income" icon="fa fa-thermometer-full" color="primary" footer link="#/charts"/>
+              <Widget02 header="Temperature" mainText="Status: OK" icon="fa fa-thermometer-full" color="primary" footer link="#/charts" value="23"/>
             </Col></Row>
             <Row><Col xs="12">
-              <Widget02 header="Gas" mainText="Income" icon="fa fa-laptop" color="info" footer/>
+              <Widget02 header="Gas" mainText="Status: OK" icon="carbonMonoxide.svg" color="info" value="Good" footer/>
             </Col></Row>
             <Row><Col xs="12">
-              <Widget02 header="Motion" mainText="Income" icon="fa fa-moon-o" color="warning" footer/>
+              <Widget02 header="Motion" mainText="Status: OK" icon="handWaving" color="warning" value="False" footer/>
             </Col></Row>
             <Row><Col sm="12">
-              <Widget02 header="Humidity" mainText="Income" icon="fa fa-bell" color="danger" footer/>
+              <Widget02 header="Humidity" mainText="Status: OK" icon="humidity" color="danger" value="23" footer/>
             </Col></Row>
           </Col>
 
