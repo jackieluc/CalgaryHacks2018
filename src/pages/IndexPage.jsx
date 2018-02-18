@@ -1,5 +1,6 @@
 import React from "react";
 import { Row, Col } from 'react-bootstrap';
+import Status from "../components/Status.jsx";
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -15,7 +16,7 @@ class IndexPage extends React.Component {
             <div>Dashboard here</div>
           </Col>
           <Col xs={12} sm={3} style={{ backgroundColor: 'green', height: '100%', }}>
-            <div>Status info boxes here</div>
+            <div><Status/></div>
           </Col>
         </Row>
       </main>
