@@ -86,7 +86,7 @@ class Widget02 extends Component {
               { blockIcon(card.icon) }
             </Col>
             <Col xs ="3" style={{padding: "1rem 0.5rem", fontSize:"2rem"}}>
-              {value}{ header === "Humidity"? <span style={{fontSize : "1rem"}}>ppm</span>: null}{ header === "Temperature"? <span style={{fontSize : "1rem"}}>°C</span>: null}
+              {value.toString().replace(/^[a-z]/, letter => letter.toUpperCase() )}{ header === "Humidity"? <span style={{fontSize : "1rem"}}>%</span>: null}{ header === "Temperature"? <span style={{fontSize : "1rem"}}>°C</span>: null}
             </Col>
           </Row>
         </CardBody>
