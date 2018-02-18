@@ -349,6 +349,8 @@ class Dashboard extends Component {
     this.toggle = this.toggle.bind(this);
     this.fetchStatuses = this.fetchStatuses.bind(this);
 
+    document.title = 'Dashboard';
+
     this.state = {
       dropdownOpen: false,
       health: null,
@@ -362,13 +364,13 @@ class Dashboard extends Component {
   }
   
   fetchStatuses() {
-    fetch('http://52.53.149.194:8000/api/health?new')
+    fetch('http://52.53.149.194:8000/api/health?react')
     .then(res => res.json())
     .then(json => this.setState({ health: json }));
   }
 
   componentDidMount() {
-    this.timer = setInterval(()=> this.fetchStatuses(), 10000);
+    this.timer = setInterval(()=> this.fetchStatuses(), 5000);
   }
 
   render() {
@@ -378,36 +380,34 @@ class Dashboard extends Component {
           { this.state && this.state.health ? 
             !this.state.health.error ?
               <Col xs="12" sm="8">
-                {this.state.health.motion.result ? 
-                  <img src={motion} style={{position:"absolute", top:"0", left:"15px", zIndex:"-1", width: "80%" }}/>
-                    : null}
-                <img src={house} style={{width:"80%"}}/>
+                {this.state.health.motion ? 
+                  <img src={motion} style={{position:"absolute", top:"0", left:"0px", zIndex:"-1", width: "80%" }}/>
+                    : null }
                 {(new Date().getHours()) > 8 && (new Date().getHours()) < 18 ?
                   <img src={day}  style= {houseIcon}/>
-                    : <img src={night}  style={houseIcon}/> }
-                {this.state.health.temperature.result < 15 ?
+                  : <img src={night}  style={houseIcon}/> }
+                {this.state.health.temperature && this.state.health.temperature.result < 15 ?
                   <img src={cold} style={houseIcon}/>
-                    : null }
-                {this.state.health.temperature.result > 27 ?
+                  : null }
+                {this.state.health.temperature && this.state.health.temperature.result > 27 ?
                   <img src={hot} style={houseIcon}/>
-                    : null }
-                {this.state.health.gas.result < 5 ?
+                  : null }
+                {this.state.health.gas && this.state.health.gas.result < 5 ?
                   <img src={smoke} style={houseIcon}/>
-                    : null }
-                {this.state.health.humidity.result > 50 ?
+                  : null }
+                {this.state.health.humidity && this.state.health.humidity.result > 50 ?
                   <img src={flood} style={houseIcon}/>
-                    : null }
+                  : null }
+                <img src={house} style={{width:"80%"}}/>
               </Col>
-              :
-              <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+              : <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+                  <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
+                  <small style={{ marginLeft: '10px' }}>Unable to retrieve summary... Retrying...</small>
+                </div>
+            : <div style={{ margin: '0 auto', paddingTop: '25%' }}>
                 <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
-                <small style={{ marginLeft: '10px' }}>Unable to retrieve summary... Retrying...</small>
+                <small style={{ marginLeft: '10px' }}>Loading summary...</small>
               </div>
-            :
-            <div style={{ margin: '0 auto', paddingTop: '25%' }}>
-              <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
-              <small style={{ marginLeft: '10px' }}>Loading summary...</small>
-            </div>
           }
 
           {this.state && this.state.health ? 
@@ -415,14 +415,14 @@ class Dashboard extends Component {
               <Col xs="12" sm="4">
                 <Row><Col xs="12">
                   {
-                    this.state.health.temperature.result > 27 || this.state.health.temperature.result < 15 ?
+                    (typeof(this.state.health.temperature) !== 'undefined' && (this.state.health.temperature.result > 40) || this.state.health.temperature && (this.state.health.temperature.result < -40)) ?
                     <Widget02 header="Temperature" mainText="Status: Danger" icon="fa fa-thermometer-full" color="danger" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
                     : <Widget02 header="Temperature" mainText="Status: Good" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
                   }
                 </Col></Row>
                 <Row><Col xs="12">
                   {
-                    this.state.health.gas.result < 5 ?
+                    this.state.health.gas && this.state.health.gas.result < 5 ?
                     <Widget02 header="Air Quality" mainText="Status: Danger" icon="carbonMonoxide.svg" color="danger" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
                     : <Widget02 header="Air Quality" mainText="Status: Good" icon="carbonMonoxide.svg" color="primary" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
                   }
@@ -432,7 +432,7 @@ class Dashboard extends Component {
                 </Col></Row>
                 <Row><Col sm="12">
                   {
-                    this.state.health.humidity.result > 50?
+                    this.state.health.humidity && this.state.health.humidity.result > 50?
                     <Widget02 header="Humidity" mainText="Status: Danger" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
                     : <Widget02 header="Humidity" mainText="Status: Good" icon="humidity" color="primary" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
                   }
