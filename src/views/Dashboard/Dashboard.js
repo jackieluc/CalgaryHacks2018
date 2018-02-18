@@ -368,22 +368,47 @@ class Dashboard extends Component {
   }
 
   componentDidMount() {
-    this.fetchStatuses();
+    this.timer = setInterval(()=> this.fetchStatuses(), 3000);
   }
 
   render() {
     return (
-      <div className="animated fadeIn">
+      <div className="animated fadeIn" style={{overflow: 'hidden'}}>
         <Row>
-          <Col xs="12" sm="8">
-            {this.state && this.state.health && this.state.health.motion.result ? <img src={motion}  style= {{position:"absolute", top:"0", left:"15px", zIndex:"-1", width: "80%" }}/> : null}
-            <img src={house} style={{width:"80%"}}/>
-            {(new Date().getHours()) > 8 && (new Date().getHours()) < 18 ? <img src={day}  style= {houseIcon}/> : <img src={night}  style= {houseIcon}/> }
-            {this.state && this.state.health && this.state.health.temperature.result < 15? <img src={cold}  style= {houseIcon}/> :null }
-            {this.state && this.state.health && this.state.health.temperature.result > 27? <img src={hot}  style= {houseIcon}/> :null }
-            {this.state && this.state.health && this.state.health.gas.result < 5? <img src={smoke} style={houseIcon}/> : null }
-            {this.state && this.state.health && this.state.health.humidity.result > 50 ? <img src={flood}  style= {houseIcon}/> : null }
-          </Col>
+          { this.state && this.state.health ? 
+            !this.state.health.error ?
+              <Col xs="12" sm="8">
+                {this.state.health.motion.result ? 
+                  <img src={motion} style={{position:"absolute", top:"0", left:"15px", zIndex:"-1", width: "80%" }}/>
+                    : null}
+                <img src={house} style={{width:"80%"}}/>
+                {(new Date().getHours()) > 8 && (new Date().getHours()) < 18 ?
+                  <img src={day}  style= {houseIcon}/>
+                    : <img src={night}  style={houseIcon}/> }
+                {this.state.health.temperature.result < 15 ?
+                  <img src={cold} style={houseIcon}/>
+                    : null }
+                {this.state.health.temperature.result > 27 ?
+                  <img src={hot} style={houseIcon}/>
+                    : null }
+                {this.state.health.gas.result < 5 ?
+                  <img src={smoke} style={houseIcon}/>
+                    : null }
+                {this.state.health.humidity.result > 50 ?
+                  <img src={flood} style={houseIcon}/>
+                    : null }
+              </Col>
+              :
+              <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+                <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
+                <small style={{ marginLeft: '10px' }}>Unable to retrieve summary... Retrying...</small>
+              </div>
+            :
+            <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+              <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
+              <small style={{ marginLeft: '10px' }}>Loading summary...</small>
+            </div>
+          }
 
           {this.state && this.state.health ? 
             !this.state.health.error ? 
@@ -391,15 +416,15 @@ class Dashboard extends Component {
                 <Row><Col xs="12">
                   {
                     this.state.health.temperature.result > 27 || this.state.health.temperature.result < 15 ?
-                    <Widget02 header="Temperature" mainText="Status: Danger" icon="fa fa-thermometer-full" color="danger" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />:
-                    <Widget02 header="Temperature" mainText="Status: Good" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
+                    <Widget02 header="Temperature" mainText="Status: Danger" icon="fa fa-thermometer-full" color="danger" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
+                    : <Widget02 header="Temperature" mainText="Status: Good" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
                   }
                 </Col></Row>
                 <Row><Col xs="12">
                   {
                     this.state.health.gas.result < 5 ?
-                    <Widget02 header="Air Quality" mainText="Status: Danger" icon="carbonMonoxide.svg" color="danger" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />:
-                    <Widget02 header="Air Quality" mainText="Status: Good" icon="carbonMonoxide.svg" color="primary" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
+                    <Widget02 header="Air Quality" mainText="Status: Danger" icon="carbonMonoxide.svg" color="danger" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
+                    : <Widget02 header="Air Quality" mainText="Status: Good" icon="carbonMonoxide.svg" color="primary" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
                   }
                 </Col></Row>
                 <Row><Col xs="12">
@@ -408,8 +433,8 @@ class Dashboard extends Component {
                 <Row><Col sm="12">
                   {
                     this.state.health.humidity.result > 50?
-                    <Widget02 header="Humidity" mainText="Status: Danger" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />:
-                    <Widget02 header="Humidity" mainText="Status: Good" icon="humidity" color="primary" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
+                    <Widget02 header="Humidity" mainText="Status: Danger" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
+                    : <Widget02 header="Humidity" mainText="Status: Good" icon="humidity" color="primary" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
                   }
                 </Col></Row>
               </Col>
@@ -421,7 +446,8 @@ class Dashboard extends Component {
                   this.fetchStatuses()
                 }
               </div>
-            : <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+            : 
+            <div style={{ margin: '0 auto', paddingTop: '25%' }}>
               <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
               <small style={{ marginLeft: '10px' }}>Loading statuses...</small>
             </div>

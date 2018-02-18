@@ -26,17 +26,6 @@ function random(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-// var elements = 27;
-var data1 = [];
-var data2 = [];
-var data3 = [];
-
-// for (var i = 0; i <= elements; i++) {
-//   data1.push(random(50, 200));
-//   data2.push(random(80, 100));
-//   data3.push(65);
-// }
-
 class HistoryChart extends Component {
   constructor(props) {
     super(props);
@@ -55,6 +44,7 @@ class HistoryChart extends Component {
         "July", "August", "September",
         "October", "November", "December"
       ],
+      labels: [],
     };
   }
 
@@ -65,17 +55,30 @@ class HistoryChart extends Component {
   }
 
   fetchStatusHistory(header) {
+    // because everyone else is lazy
+    if (header === 'air-quality') {
+      header = 'gas';
+    }
+
     fetch(`http://52.53.149.194:8000/api/get/${header}`)
       .then(res => res.json())
       .then(json => {
         this.setState({ dataPoints: json });
         let arr = [];
+        let labelsArr = [];
         const temp = this.state.dataPoints.values.sort((a, b) => a.time - b.time);
         console.log(temp);
         for (let obj of temp) {
-          arr.push(obj.value.toFixed(2));
+          labelsArr.push(`${new Date(obj.time).getHours()}:${new Date(obj.time).getMinutes()}:${new Date(obj.time).getSeconds()}`);
+          console.log(typeof obj);
+          if (typeof obj.value === 'boolean') {
+            arr.push(obj.value);
+          }
+          else {
+            arr.push(obj.value.toFixed(2));
+          }
         }
-        this.setState({ dataPointsArray: arr });
+        this.setState({ dataPointsArray: arr, labels: labelsArr });
     });
   }
 
@@ -87,33 +90,16 @@ class HistoryChart extends Component {
     const acceptedStatuses = ['temperature', 'air-quality', 'motion', 'humidity'];
     const header = this.props.props.location.pathname.split('/')[2];
     const mainChart = {
-      labels: ['M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S', 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
+      labels: this.state.labels,
       datasets: [
         {
-          label: 'My First dataset',
+          label: 'Status History',
           backgroundColor: convertHex(brandInfo, 10),
           borderColor: brandInfo,
           pointHoverBackgroundColor: '#fff',
           borderWidth: 2,
           data: this.state.dataPointsArray,
         },
-        {
-          label: 'My Second dataset',
-          backgroundColor: 'transparent',
-          borderColor: brandSuccess,
-          pointHoverBackgroundColor: '#fff',
-          borderWidth: 2,
-          data: data2
-        },
-        {
-          label: 'My Third dataset',
-          backgroundColor: 'transparent',
-          borderColor: brandDanger,
-          pointHoverBackgroundColor: '#fff',
-          borderWidth: 1,
-          borderDash: [8, 5],
-          data: data3
-        }
       ]
     }
     
@@ -160,16 +146,6 @@ class HistoryChart extends Component {
                     <CardTitle className="mb-0">{header.replace(/^[a-z]/, letter => letter.toUpperCase())} History</CardTitle>
                     <div className="small text-muted">{`${this.state.monthNames[new Date(this.state.dataPoints.values[0].time).getMonth()]} ${new Date(this.state.dataPoints.values[0].time).getFullYear()}`}</div>
                   </Col>
-                  <Col sm="7" className="d-none d-sm-inline-block">
-                    <Button color="primary" className="float-right"><i className="icon-cloud-download"></i></Button>
-                    <ButtonToolbar className="float-right" aria-label="Toolbar with button groups">
-                      <ButtonGroup className="mr-3" aria-label="First group">
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(1)} active={this.state.radioSelected === 1}>Day</Button>
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(2)} active={this.state.radioSelected === 2}>Month</Button>
-                        <Button color="outline-secondary" onClick={() => this.onRadioBtnClick(3)} active={this.state.radioSelected === 3}>Year</Button>
-                      </ButtonGroup>
-                    </ButtonToolbar>
-                  </Col>
                 </Row>
                 <div className="chart-wrapper" style={{height: 300 + 'px', marginTop: 40 + 'px'}}>
                 { console.log(this.state.dataPointsArray)}
@@ -182,26 +158,6 @@ class HistoryChart extends Component {
                     <div className="text-muted">Visits</div>
                     <strong>29.703 Users (40%)</strong>
                     <Progress className="progress-xs mt-2" color="success" value="40"/>
-                  </li>
-                  <li className="d-none d-md-table-cell">
-                    <div className="text-muted">Unique</div>
-                    <strong>24.093 Users (20%)</strong>
-                    <Progress className="progress-xs mt-2" color="info" value="20"/>
-                  </li>
-                  <li>
-                    <div className="text-muted">Pageviews</div>
-                    <strong>78.706 Views (60%)</strong>
-                    <Progress className="progress-xs mt-2" color="warning" value="60"/>
-                  </li>
-                  <li className="d-none d-md-table-cell">
-                    <div className="text-muted">New Users</div>
-                    <strong>22.123 Users (80%)</strong>
-                    <Progress className="progress-xs mt-2" color="danger" value="80"/>
-                  </li>
-                  <li className="d-none d-md-table-cell">
-                    <div className="text-muted">Bounce Rate</div>
-                    <strong>Average 40.15%</strong>
-                    <Progress className="progress-xs mt-2" color="primary" value="40"/>
                   </li>
                 </ul>
               </CardFooter>
