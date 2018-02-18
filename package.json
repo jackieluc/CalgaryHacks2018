@@ -27,6 +27,7 @@
     "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
   },
   "author": "Jackie Luc, Kourosh Banaeianzadeh, Eric Ma, Kenneth R Hancock, Micheal Friesen",
+  "emails": "jaluc@ucalgary.ca, kourosh.banaeianzade@ucalgary.ca, ericsiyuanma@gmail.com, kryan.hancock@gmail.com, michealfriesen@gmail.com"
   "license": "MIT",
   "dependencies": {
     "node-fetch": "2.0.0",
