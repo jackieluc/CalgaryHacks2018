@@ -1,10 +1,42 @@
 {
+<<<<<<< HEAD
   "name": "@coreui/react",
   "version": "1.0.10",
   "description": "Open Source Bootstrap Admin Template",
   "author": "Łukasz Holeczek",
   "homepage": "http://coreui.io",
   "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
+=======
+  "name": "calgaryhacks2018",
+  "version": "0.1.0",
+  "description": "CalgaryHacks 2018",
+  "engines": {
+    "npm": ">=3"
+  },
+  "scripts": {
+    "preinstall": "node tools/nodeVersionCheck.js",
+    "start-message": "babel-node tools/startMessage.js",
+    "prestart": "npm run start-message",
+    "start": "concurrently -k -r -s first \"npm run test:watch\" \"npm run open:src\" \"npm run lint:watch\"",
+    "open:src": "babel-node tools/srcServer.js",
+    "open:dist": "babel-node tools/distServer.js",
+    "lint": "esw webpack.config.* src tools --color",
+    "lint:watch": "npm run lint -- --watch",
+    "clean-dist": "npm run remove-dist && mkdir dist",
+    "remove-dist": "rimraf ./dist",
+    "prebuild": "npm run lint && npm run test && npm run clean-dist",
+    "build": "babel-node tools/build.js && npm run open:dist",
+    "test": "jest",
+    "test:CI": "babel-node tools/testCi.js",
+    "test:cover": "npm run test -- --coverage ",
+    "test:cover:CI": "npm run test:CI -- --coverage && cat ./coverage/lcov.info | node_modules/coveralls/bin/coveralls.js",
+    "test:watch": "jest --watch",
+    "open:cover": "npm run test:cover && opn ./coverage/lcov-report/index.html",
+    "analyze-bundle": "babel-node ./tools/analyzeBundle.js"
+  },
+  "author": "Jackie Luc, Kourosh Banaeianzadeh, Eric Ma, Kenneth R Hancock, Micheal Friesen",
+  "emails": "jaluc@ucalgary.ca, kourosh.banaeianzade@ucalgary.ca, ericsiyuanma@gmail.com, kryan.hancock@gmail.com, michealfriesen@gmail.com",
+>>>>>>> 5119fbadbffec2d05f9ce70615884fba88c9a7b0
   "license": "MIT",
   "private": true,
   "devDependencies": {
