@@ -51,18 +51,6 @@ class Header extends Component {
             <NavLink href="#/Settings"><i className="fa fa-cog fa-lg"></i></NavLink>
           </NavItem>
         </Nav>
-        {/* <Nav className="ml-auto" navbar>
-          <NavItem className="d-md-down-none">
-            <NavLink href="#"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
-          </NavItem>
-          <NavItem className="d-md-down-none">
-            <NavLink href="#"><i className="icon-list"></i></NavLink>
-          </NavItem>
-          <NavItem className="d-md-down-none">
-            <NavLink href="#"><i className="icon-location-pin"></i></NavLink>
-          </NavItem>
-          <HeaderDropdown/>
-        </Nav> */}
       </header>
     );
   }
