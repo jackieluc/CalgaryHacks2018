@@ -35,17 +35,17 @@ class About extends Component{
                 <h3>Real time status</h3>
                 <Row>
                     <Col xs="12" s="6" md="3">
-                        <img src={temprature} alt="Temprature" style={{height : "100px" }}/>
+                        <img src="#" alt="Temprature" style={{height : "100px" }}/>
                     </Col>
                     <Col xs="12" s="6" md="3">
-                        <img src={airQuality} alt="Air Quality" style={{height : "100px" }}/>
+                        <img src="#" alt="Air Quality" style={{height : "100px" }}/>
                     </Col>
                     <Col xs="12" s="6" md="3">
-                        <img src={motion} alt="Motion" style={{height : "100px" }}/>
+                        <img src="#" alt="Motion" style={{height : "100px" }}/>
                         <p>Detect activity</p>
                     </Col>
                     <Col xs="12" s="6" md="3">
-                        <img src={humidity} alt="Humidity" style={{height : "100px" }}/>
+                        <img src="#" alt="Humidity" style={{height : "100px" }}/>
                     </Col>
                 </Row>            
             </div>
