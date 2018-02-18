@@ -1,6 +1,6 @@
 import React from "react";
 
-export default class IndexPage extends React.Component {
+class IndexPage extends React.Component {
   constructor(props) {
     super(props);
     document.title = "Home Dashboard";
@@ -14,3 +14,5 @@ export default class IndexPage extends React.Component {
     );
   }
 }
+
+export default IndexPage;

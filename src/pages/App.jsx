@@ -1,7 +1,8 @@
 import React from "react";
 import PropTypes from 'prop-types';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Header from "../components/Header";
+// import Header from "../components/Header";
+import IndexPage from '../pages/IndexPage';
 
 // This is a class-based component because the current
 // version of hot reloading won't hot reload a stateless
@@ -11,12 +12,12 @@ class App extends React.Component {
     return (
       <Router>
       <div>
-        <Header />
+        {/* <Header /> */}
         <Switch>
           <Route exact path="/" component={IndexPage} />
           {/* <Route path="*" component={NotFoundPage} /> */}
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
       </div>
     </Router>
     );
