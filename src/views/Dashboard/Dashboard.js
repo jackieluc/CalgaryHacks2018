@@ -343,18 +343,25 @@ class Dashboard extends Component {
     return (
       <div className="animated fadeIn">
         <Row>
-          <Col xs="12" sm="6" lg="3">
-            <Widget02 header="Temperature" mainText="Income" icon="fa fa-cogs" color="primary" footer link="#/charts"/>
+          <Col xs="12" sm="8">
+            This is the picture
           </Col>
-          <Col xs="12" sm="6" lg="3">
-            <Widget02 header="Gas" mainText="Income" icon="fa fa-laptop" color="info" footer/>
+          
+          <Col xs="12" sm="4">
+            <Row><Col xs="12">
+              <Widget02 header="Temperature" mainText="Income" icon="fa fa-thermometer-full" color="primary" footer link="#/charts"/>
+            </Col></Row>
+            <Row><Col xs="12">
+              <Widget02 header="Gas" mainText="Income" icon="fa fa-laptop" color="info" footer/>
+            </Col></Row>
+            <Row><Col xs="12">
+              <Widget02 header="Motion" mainText="Income" icon="fa fa-moon-o" color="warning" footer/>
+            </Col></Row>
+            <Row><Col sm="12">
+              <Widget02 header="Humidity" mainText="Income" icon="fa fa-bell" color="danger" footer/>
+            </Col></Row>
           </Col>
-          <Col xs="12" sm="6" lg="3">
-            <Widget02 header="Motion" mainText="Income" icon="fa fa-moon-o" color="warning" footer/>
-          </Col>
-          <Col xs="12" sm="6" lg="3">
-            <Widget02 header="Humidity" mainText="Income" icon="fa fa-bell" color="danger" footer/>
-          </Col>
+
         </Row>
         
         {/* <Row>
