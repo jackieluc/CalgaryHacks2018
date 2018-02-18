@@ -10,7 +10,7 @@ class StatusHistory extends Component {
   render() {
     return (
       <div className='container-fluid'>
-        <HistoryChart />
+        <HistoryChart props={this.props} />
       </div>
     );
   }
