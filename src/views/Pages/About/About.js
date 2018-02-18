@@ -1,6 +1,10 @@
 import React,{Component} from "react";
 import {Row,Col} from "reactstrap";
 import logo from "../../../../public/img/logo.png"
+import air from "../../../../public/img/about/Air.jpg"
+import humidity from "../../../../public/img/about/Humidity.jpg"
+import motion from "../../../../public/img/about/Motion.jpg"
+import temp from "../../../../public/img/about/Temp.jpg"
 
 class About extends Component{
     render(){
@@ -30,18 +34,17 @@ class About extends Component{
                 <h2>Dashboard</h2>
                 <h3>Real time status</h3>
                 <Row>
-                    <Col xs="12" s="6" md="3">
-                        <img src="#" alt="Temprature" style={{height : "100px" }}/>
+                    <Col xs="12" sm="6" md="3">
+                        <img src={temp} alt="Temprature" style={{width : "100%", paddingBottom: "20px" }}/>
                     </Col>
-                    <Col xs="12" s="6" md="3">
-                        <img src="#" alt="Air Quality" style={{height : "100px" }}/>
+                    <Col xs="12" sm="6" md="3">
+                        <img src={air} alt="Air Quality" style={{width : "100%", paddingBottom: "20px" }}/>
                     </Col>
-                    <Col xs="12" s="6" md="3">
-                        <img src="#" alt="Motion" style={{height : "100px" }}/>
-                        <p>Detect activity</p>
+                    <Col xs="12" sm="6" md="3">
+                        <img src={motion} alt="Motion" style={{width : "100%", paddingBottom: "20px" }}/>
                     </Col>
-                    <Col xs="12" s="6" md="3">
-                        <img src="#" alt="Humidity" style={{height : "100px" }}/>
+                    <Col xs="12" sm="6" md="3">
+                        <img src={humidity} alt="Humidity" style={{width : "100%", paddingBottom: "20px" }}/>
                     </Col>
                 </Row>            
             </div>
