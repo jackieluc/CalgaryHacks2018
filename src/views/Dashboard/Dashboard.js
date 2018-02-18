@@ -23,6 +23,7 @@ import {
   Table
 } from 'reactstrap';
 import Widget02 from '../Widgets/Widget02';
+import fetch from 'node-fetch';
 
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
@@ -329,6 +330,7 @@ class Dashboard extends Component {
 
     this.state = {
       dropdownOpen: false,
+      health: null,
     };
   }
 
@@ -338,8 +340,13 @@ class Dashboard extends Component {
     });
   }
 
-  render() {
+  componentDidMount() {
+    fetch('http://52.53.149.194:8000/api/health')
+      .then(res => res.json())
+      .then(json => this.setState({ health: json }));
+  }
 
+  render() {
     return (
       <div className="animated fadeIn">
         <Row>
@@ -347,21 +354,26 @@ class Dashboard extends Component {
             This is the picture
           </Col>
           
-          <Col xs="12" sm="4">
-            <Row><Col xs="12">
-              <Widget02 header="Temperature" mainText="Income" icon="fa fa-thermometer-full" color="primary" footer link="#/charts"/>
-            </Col></Row>
-            <Row><Col xs="12">
-              <Widget02 header="Gas" mainText="Income" icon="fa fa-laptop" color="info" footer/>
-            </Col></Row>
-            <Row><Col xs="12">
-              <Widget02 header="Motion" mainText="Income" icon="fa fa-moon-o" color="warning" footer/>
-            </Col></Row>
-            <Row><Col sm="12">
-              <Widget02 header="Humidity" mainText="Income" icon="fa fa-bell" color="danger" footer/>
-            </Col></Row>
-          </Col>
-
+          {this.state.health ? 
+            <Col xs="12" sm="4">
+              <Row><Col xs="12">
+                <Widget02 header="Temperature" mainText="Income" icon="fa fa-thermometer-full" color="primary" footer link="#/charts"/>
+              </Col></Row>
+              <Row><Col xs="12">
+                <Widget02 header="Gas" mainText="Income" icon="fa fa-laptop" color="info" footer/>
+              </Col></Row>
+              <Row><Col xs="12">
+                <Widget02 header="Motion" mainText="Income" icon="fa fa-moon-o" color="warning" footer/>
+              </Col></Row>
+              <Row><Col sm="12">
+                <Widget02 header="Humidity" mainText="Income" icon="fa fa-bell" color="danger" footer/>
+              </Col></Row>
+            </Col>
+            : <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+              <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
+              <small style={{ marginLeft: '10px' }}>Loading statuses...</small>
+            </div>
+          }
         </Row>
         
         {/* <Row>
