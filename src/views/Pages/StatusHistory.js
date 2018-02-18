@@ -4,7 +4,9 @@ import HistoryChart from '../../components/HistoryChart';
 class StatusHistory extends Component {
   render() {
     return (
-      <HistoryChart />
+      <div className='container-fluid'>
+        <HistoryChart />
+      </div>
     );
   }
 }
