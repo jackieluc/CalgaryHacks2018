@@ -361,16 +361,16 @@ class Dashboard extends Component {
             !this.state.health.error ? 
               <Col xs="12" sm="4">
                 <Row><Col xs="12">
-                  <Widget02 header="Temperature" mainText="Status: OK" icon="fa fa-thermometer-full" color="primary" footer link="#/charts" value={this.state.health.temperature.result.toFixed(0)} />
+                  <Widget02 header="Temperature" mainText="Status: OK" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
                 </Col></Row>
                 <Row><Col xs="12">
-                  <Widget02 header="Air Quality" mainText="Status: OK" icon="carbonMonoxide.svg" color="info" value={this.state.health.gas.result.toFixed(2)} footer />
+                  <Widget02 header="Air Quality" mainText="Status: OK" icon="carbonMonoxide.svg" color="info" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
                 </Col></Row>
                 <Row><Col xs="12">
-                  <Widget02 header="Motion" mainText="Status: OK" icon="handWaving" color="warning" value={this.state.health.motion.result} footer />
+                  <Widget02 header="Motion" mainText="Status: OK" icon="handWaving" color="warning" value={this.state.health.motion.result} footer link="#/status-history/motion" />
                 </Col></Row>
                 <Row><Col sm="12">
-                  <Widget02 header="Humidity" mainText="Status: OK" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer />
+                  <Widget02 header="Humidity" mainText="Status: OK" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
                 </Col></Row>
               </Col>
               :
