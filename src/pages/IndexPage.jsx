@@ -4,17 +4,20 @@ import { Row, Col } from 'react-bootstrap';
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
-    document.title = "Home Dashboard";
+    document.title = 'Home Dashboard';
   }
 
   render() {
     return (
       <main>
-        <Row style={{ height: '100vh', width: '100%', overflow: 'hidden', }}>
-          <Col xs={12} sm={9} style={{ backgroundColor: 'aqua', height: '100%', }}>
+        <Row style={{ height: '100vh', width: '100%', }}>
+          <Col xsHidden sm={2} style={{ backgroundColor: '#193441', height: '100%', }}>
+            <div>Navbar here</div>
+          </Col>
+          <Col xs={12} sm={7} style={{ backgroundColor: '#FCFFF5', height: '100%', }}>
             <div>Dashboard here</div>
           </Col>
-          <Col xs={12} sm={3} style={{ backgroundColor: 'green', height: '100%', }}>
+          <Col xs={12} sm={3} style={{ backgroundColor: '#FCFFF5', height: '100%', }}>
             <div>Status info boxes here</div>
           </Col>
         </Row>
