@@ -1,54 +1,54 @@
 import React, {Component} from 'react';
 import {Switch, Route, Redirect} from 'react-router-dom';
 import {Container} from 'reactstrap';
-import Header from '../../components/Header/';
-import Sidebar from '../../components/Sidebar/';
-import Breadcrumb from '../../components/Breadcrumb/';
-import Aside from '../../components/Aside/';
-import Footer from '../../components/Footer/';
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
+import Breadcrumb from '../components/Breadcrumb';
+import Aside from '../components/Aside';
+import Footer from '../components/Footer';
 
-import Dashboard from '../../views/Dashboard/';
+import Dashboard from '../views/Dashboard/';
 
-import Colors from '../../views/Theme/Colors/';
-import Typography from '../../views/Theme/Typography/';
+import Colors from '../views/Theme/Colors/';
+import Typography from '../views/Theme/Typography/';
 
-import Charts from '../../views/Charts/';
-import Widgets from '../../views/Widgets/';
+import Charts from '../views/Charts/';
+import Widgets from '../views/Widgets/';
 
 // Base
-import Cards from '../../views/Base/Cards/';
-import Forms from '../../views/Base/Forms/';
-import Switches from '../../views/Base/Switches/';
-import Tables from '../../views/Base/Tables/';
-import Tabs from '../../views/Base/Tabs/';
-import Breadcrumbs from '../../views/Base/Breadcrumbs/';
-import Carousels from '../../views/Base/Carousels/';
-import Collapses from '../../views/Base/Collapses/';
-import Dropdowns from '../../views/Base/Dropdowns/';
-import Jumbotrons from '../../views/Base/Jumbotrons/';
-import ListGroups from '../../views/Base/ListGroups/';
-import Navbars from '../../views/Base/Navbars/';
-import Navs from '../../views/Base/Navs/';
-import Paginations from '../../views/Base/Paginations/';
-import Popovers from '../../views/Base/Popovers/';
-import ProgressBar from '../../views/Base/ProgressBar/';
-import Tooltips from '../../views/Base/Tooltips/';
+import Cards from '../views/Base/Cards/';
+import Forms from '../views/Base/Forms/';
+import Switches from '../views/Base/Switches/';
+import Tables from '../views/Base/Tables/';
+import Tabs from '../views/Base/Tabs/';
+import Breadcrumbs from '../views/Base/Breadcrumbs/';
+import Carousels from '../views/Base/Carousels/';
+import Collapses from '../views/Base/Collapses/';
+import Dropdowns from '../views/Base/Dropdowns/';
+import Jumbotrons from '../views/Base/Jumbotrons/';
+import ListGroups from '../views/Base/ListGroups/';
+import Navbars from '../views/Base/Navbars/';
+import Navs from '../views/Base/Navs/';
+import Paginations from '../views/Base/Paginations/';
+import Popovers from '../views/Base/Popovers/';
+import ProgressBar from '../views/Base/ProgressBar/';
+import Tooltips from '../views/Base/Tooltips/';
 
 // Buttons
-import Buttons from '../../views/Buttons/Buttons/';
-import ButtonDropdowns from '../../views/Buttons/ButtonDropdowns/';
-import ButtonGroups from '../../views/Buttons/ButtonGroups/';
-import SocialButtons from '../../views/Buttons/SocialButtons/';
+import Buttons from '../views/Buttons/Buttons/';
+import ButtonDropdowns from '../views/Buttons/ButtonDropdowns/';
+import ButtonGroups from '../views/Buttons/ButtonGroups/';
+import SocialButtons from '../views/Buttons/SocialButtons/';
 
 // Icons
-import Flags from '../../views/Icons/Flags/';
-import FontAwesome from '../../views/Icons/FontAwesome/';
-import SimpleLineIcons from '../../views/Icons/SimpleLineIcons/';
+import Flags from '../views/Icons/Flags/';
+import FontAwesome from '../views/Icons/FontAwesome/';
+import SimpleLineIcons from '../views/Icons/SimpleLineIcons/';
 
 // Notifications
-import Alerts from '../../views/Notifications/Alerts/';
-import Badges from '../../views/Notifications/Badges/';
-import Modals from '../../views/Notifications/Modals/';
+import Alerts from '../views/Notifications/Alerts/';
+import Badges from '../views/Notifications/Badges/';
+import Modals from '../views/Notifications/Modals/';
 
 class Full extends Component {
   render() {
