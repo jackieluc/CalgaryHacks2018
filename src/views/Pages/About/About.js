@@ -1,30 +1,35 @@
 import React,{Component} from "react";
 import {Row,Col} from "reactstrap";
-import temprature from "../../../../public/img/about/temprature.png"
-import airQuality from "../../../../public/img/about/airQuality.png"
-import motion from "../../../../public/img/about/motion.png"
-import humidity from "../../../../public/img/about/humidity.png"
 
 
 class About extends Component{
-
-
     render(){
         
         return(
-            <div> 
-                <h1>About</h1>
+            <div>
+                <Row>
+                    <Col xs="12">
+                        <h1>About</h1>
+                    </Col>
+                </Row> 
+                <Row>
+                    <Col xs="12" sm="8">
+                        <h2>Purpose</h2>
 
-                <h2>Purpose:</h2>
-                <p>
-                    Homes are the greatest investment many make, but many do not take precautions to keep them safe. 
-                    Thus over 24 hours we have built an IOT device that can protect your property. With sensors such 
-                    as temperature, humidity, air quality and motion you can keep track of your home. Furthermore, 
-                    we have created a dashboard website to view the status of your home. Thus, you can keep tabs on 
-                    your house when you are away, or renting on Airbnb. Lastly the server keeps track of the history 
-                    of the sensors, which can be used to diagnose problems occurring the house such as a water leak, 
-                    or a faulty thermostat.
-                </p>
+                        <p>
+                            Welcome home. 
+                            <br></br>
+                            Thus over 24 hours we have built an IOT device that can protect your property. With sensors such 
+                            as temperature, humidity, air quality and motion you can keep track of your home. Furthermore, 
+                            we have created a dashboard website to view the status of your home. Thus, you can keep tabs on 
+                            your house when you are away, or renting on Airbnb. Lastly the server keeps track of the history 
+                            of the sensors, which can be used to diagnose problems occurring the house such as a water leak, 
+                            or a faulty thermostat.
+                        </p>
+                    </Col>
+                </Row>
+            
+                
 
                 <h2>Dashboard</h2>
                 <h3>Real time status</h3>
@@ -48,4 +53,4 @@ class About extends Component{
     }
 }
 
-
+export default About;

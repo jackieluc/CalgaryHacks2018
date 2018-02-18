@@ -234,6 +234,11 @@ export default {
           icon: 'icon-star'
         },
         {
+          name: 'About',
+          url: '/about',
+          icon: 'icon-star'
+        },
+        {
           name: 'Register',
           url: '/register',
           icon: 'icon-star'
