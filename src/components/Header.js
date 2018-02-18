@@ -40,7 +40,7 @@ class Header extends Component {
   mobileSidebarToggle(e) {
     e.preventDefault();
     document.body.classList.toggle('sidebar-mobile-show');
-    const chevronIcon = this.state.isCollapsed ? 'fa fa-chevron-left' : 'fa fa-chevron-right';
+    const chevronIcon = this.state.isCollapsed ? 'fa fa-chevron-right' : 'fa fa-chevron-left';
     this.setState({ 
       isCollapsed: !this.state.isCollapsed,
       currentChevronIcon: chevronIcon,
@@ -57,11 +57,6 @@ class Header extends Component {
         <NavbarToggler className="d-md-down-none" onClick={this.sidebarToggle}>
           <span className={this.state.currentChevronIcon}></span>
         </NavbarToggler>
-        <Nav className="d-md-down-none" navbar>
-          <NavItem className="px-3">
-            <NavLink href="#/dashboard">Dashboard</NavLink>
-          </NavItem>
-        </Nav>
         <Nav className="ml-auto" navbar>
           <NavItem className="px-3">
             <NavLink href="#/Settings"><i className="fa fa-cog fa-lg"></i></NavLink>
