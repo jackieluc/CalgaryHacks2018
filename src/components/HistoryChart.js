@@ -70,7 +70,9 @@ class HistoryChart extends Component {
       .then(json => {
         this.setState({ dataPoints: json });
         let arr = [];
-        for (let obj of this.state.dataPoints.values) {
+        const temp = this.state.dataPoints.values.sort((a, b) => a.time - b.time);
+        console.log(temp);
+        for (let obj of temp) {
           arr.push(obj.value.toFixed(2));
         }
         this.setState({ dataPointsArray: arr });
@@ -130,9 +132,9 @@ class HistoryChart extends Component {
           ticks: {
             beginAtZero: false,
             maxTicksLimit: 10,
-            stepSize: Math.ceil(30 / 8),
-            min: -10,
-            max: 30
+            stepSize: Math.ceil(100 /10),
+            min: 0,
+            max: 100
           }
         }]
       },
