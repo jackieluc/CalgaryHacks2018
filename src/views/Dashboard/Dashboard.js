@@ -362,13 +362,13 @@ class Dashboard extends Component {
   }
   
   fetchStatuses() {
-    fetch('http://52.53.149.194:8000/api/health?react')
+    fetch('http://52.53.149.194:8000/api/health?new')
     .then(res => res.json())
     .then(json => this.setState({ health: json }));
   }
 
   componentDidMount() {
-    this.timer = setInterval(()=> this.fetchStatuses(), 3000);
+    this.timer = setInterval(()=> this.fetchStatuses(), 10000);
   }
 
   render() {

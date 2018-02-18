@@ -102,7 +102,7 @@ class HistoryChart extends Component {
     let max = 100;
     switch(header) {
       case 'temperature':
-        max = 25;
+        max = 30;
         break;
       case 'gas':
         max = 10;
@@ -215,19 +215,20 @@ class HistoryChart extends Component {
                   <Line data={mainChart} options={mainChartOpts} height={300}/>
                 </div>
               </CardBody>
-              <CardFooter>
+              {/* <CardFooter>
                 <ul>
                   <li>
-                    <div className="text-muted">Visits</div>
-                    <strong>29.703 Users (40%)</strong>
-                    <Progress className="progress-xs mt-2" color="success" value="40"/>
+                    <div className="text-muted">Average Status</div>
+                    <strong>
+                      { this.getAverage(this.state.dataPointsArray) }
+                    </strong>
                   </li>
                 </ul>
-              </CardFooter>
+              </CardFooter> */}
             </Card>
           </Col>
           </Row>
-          : <div style={{ margin: '0 auto', paddingTop: '25%' }}>
+          : <div style={{ margin: '0 auto', paddingTop: '25%', paddingLeft: '50%', }}>
               <i className="fa fa-circle-o-notch fa-lg fa-spin"></i>
               <small style={{ marginLeft: '10px' }}>Loading statuses...</small>
             </div>
