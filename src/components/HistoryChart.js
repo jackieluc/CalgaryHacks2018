@@ -45,6 +45,7 @@ class HistoryChart extends Component {
         "October", "November", "December"
       ],
       labels: [],
+      header: '',
     };
   }
 
@@ -52,6 +53,68 @@ class HistoryChart extends Component {
     this.setState({
       radioSelected: radioSelected
     });
+  }
+
+  getStepSize(header) {
+    let max = 100;
+    let ticks = 5;
+    switch(header) {
+      case 'temperature':
+        max = 30;
+        ticks = 5;
+        break;
+      case 'air-quality':
+        max = 10;
+        ticks = 5;
+        break;
+      case 'motion':
+        max = 2;
+        ticks = 1;
+        break;
+      case 'humidity':
+        max = 100;
+        ticks = 10;
+        break;
+    }
+    return Math.ceil(max, ticks);
+  }
+
+  getMin(header) {
+    let min = 0;
+    switch(header) {
+      case 'temperature':
+        min = -20;
+        break;
+      case 'gas':
+        min = 0;
+        break;
+      case 'motion':
+        min = 0;
+        break;
+      case 'humidity':
+        min = 0;
+        break;
+    }
+    return min;
+  }
+
+  getMax(header) {
+    let max = 100;
+    switch(header) {
+      case 'temperature':
+        max = 25;
+        break;
+      case 'gas':
+        max = 10;
+        break;
+      case 'motion':
+        max = 1;
+        break;
+      case 'humidity':
+        max = 100;
+        break;
+    }
+    return max;
   }
 
   fetchStatusHistory(header) {
@@ -78,12 +141,12 @@ class HistoryChart extends Component {
             arr.push(obj.value.toFixed(2));
           }
         }
-        this.setState({ dataPointsArray: arr, labels: labelsArr });
+        this.setState({ dataPointsArray: arr, labels: labelsArr, header: header });
     });
   }
 
   componentDidMount() {
-    this.fetchStatusHistory(this.props.props.location.pathname.split('/')[2]);
+    this.timer = setInterval(()=> this.fetchStatusHistory(this.props.props.location.pathname.split('/')[2]), 3000);
   }
 
   render() {
@@ -118,9 +181,9 @@ class HistoryChart extends Component {
           ticks: {
             beginAtZero: false,
             maxTicksLimit: 10,
-            stepSize: Math.ceil(100 /10),
-            min: 0,
-            max: 100
+            stepSize: this.getStepSize(this.state.header),
+            min: this.getMin(this.state.header),
+            max: this.getMax(this.state.header),
           }
         }]
       },
