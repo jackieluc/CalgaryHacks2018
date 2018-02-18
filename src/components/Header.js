@@ -43,16 +43,15 @@ class Header extends Component {
         </NavbarToggler>
         <Nav className="d-md-down-none" navbar>
           <NavItem className="px-3">
-            <NavLink href="#">Dashboard</NavLink>
-          </NavItem>
-          <NavItem className="px-3">
-            <NavLink href="#">Users</NavLink>
-          </NavItem>
-          <NavItem className="px-3">
-            <NavLink href="#">Settings</NavLink>
+            <NavLink href="#/dashboard">Dashboard</NavLink>
           </NavItem>
         </Nav>
         <Nav className="ml-auto" navbar>
+          <NavItem className="px-3">
+            <NavLink href="#/Settings"><i className="fa fa-cog fa-lg"></i></NavLink>
+          </NavItem>
+        </Nav>
+        {/* <Nav className="ml-auto" navbar>
           <NavItem className="d-md-down-none">
             <NavLink href="#"><i className="icon-bell"></i><Badge pill color="danger">5</Badge></NavLink>
           </NavItem>
@@ -63,7 +62,7 @@ class Header extends Component {
             <NavLink href="#"><i className="icon-location-pin"></i></NavLink>
           </NavItem>
           <HeaderDropdown/>
-        </Nav>
+        </Nav> */}
       </header>
     );
   }
