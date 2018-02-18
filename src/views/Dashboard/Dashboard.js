@@ -22,6 +22,7 @@ import {
   Input,
   Table
 } from 'reactstrap';
+import Widget02 from '../Widgets/Widget02';
 
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
@@ -343,6 +344,21 @@ class Dashboard extends Component {
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" sm="6" lg="3">
+            <Widget02 header="Temperature" mainText="Income" icon="fa fa-cogs" color="primary" footer link="#/charts"/>
+          </Col>
+          <Col xs="12" sm="6" lg="3">
+            <Widget02 header="Gas" mainText="Income" icon="fa fa-laptop" color="info" footer/>
+          </Col>
+          <Col xs="12" sm="6" lg="3">
+            <Widget02 header="Motion" mainText="Income" icon="fa fa-moon-o" color="warning" footer/>
+          </Col>
+          <Col xs="12" sm="6" lg="3">
+            <Widget02 header="Humidity" mainText="Income" icon="fa fa-bell" color="danger" footer/>
+          </Col>
+        </Row>
+        
+        {/* <Row>
+          <Col xs="12" sm="6" lg="3">
             <Card className="text-white bg-primary">
               <CardBody className="pb-0">
                 <ButtonGroup className="float-right">
@@ -520,7 +536,7 @@ class Dashboard extends Component {
               </ul>
             </div>
           </Col>
-        </Row>
+        </Row> */}
       </div>
     )
   }
