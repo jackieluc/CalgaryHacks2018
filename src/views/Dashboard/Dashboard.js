@@ -24,11 +24,32 @@ import {
 } from 'reactstrap';
 import Widget02 from '../Widgets/Widget02';
 
+import house from "../../../public/img/houseIcons/House.svg"
+import day from "../../../public/img/houseIcons/Day.svg"
+import night from "../../../public/img/houseIcons/Night.svg"
+import cold from "../../../public/img/houseIcons/Cold.svg"
+import hot from "../../../public/img/houseIcons/Hot.svg"
+import smoke from "../../../public/img/houseIcons/Smoke.svg"
+import motion from "../../../public/img/houseIcons/Motion.svg"
+import flood from "../../../public/img/houseIcons/Flood.svg"
+
+
 const brandPrimary = '#20a8d8';
 const brandSuccess = '#4dbd74';
 const brandInfo = '#63c2de';
 const brandWarning = '#f8cb00';
 const brandDanger = '#f86c6b';
+
+
+// This is to align the SVG's correctly on the page
+const houseIcon = {
+  position:"absolute",
+  top:"0",
+  left:"15px",
+  zIndex:"1",
+  width: "80%",
+};
+
 
 // Card Chart 1
 const cardChartData1 = {
@@ -355,22 +376,41 @@ class Dashboard extends Component {
       <div className="animated fadeIn">
         <Row>
           <Col xs="12" sm="8">
-            This is the picture
+            {this.state && this.state.health && this.state.health.motion.result ? <img src={motion}  style= {{position:"absolute", top:"0", left:"15px", zIndex:"-1", width: "80%" }}/> : null}
+            <img src={house} style={{width:"80%"}}/>
+            {(new Date().getHours()) > 8 && (new Date().getHours()) < 18 ? <img src={day}  style= {houseIcon}/> : <img src={night}  style= {houseIcon}/> }
+            {this.state && this.state.health && this.state.health.temperature.result < 15? <img src={cold}  style= {houseIcon}/> :null }
+            {this.state && this.state.health && this.state.health.temperature.result > 27? <img src={hot}  style= {houseIcon}/> :null }
+            {this.state && this.state.health && this.state.health.gas.result < 5? <img src={smoke} style={houseIcon}/> : null }
+            {this.state && this.state.health && this.state.health.humidity.result > 50 ? <img src={flood}  style= {houseIcon}/> : null }
           </Col>
+
           {this.state && this.state.health ? 
             !this.state.health.error ? 
               <Col xs="12" sm="4">
                 <Row><Col xs="12">
-                  <Widget02 header="Temperature" mainText="Status: OK" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
+                  {
+                    this.state.health.temperature.result > 27 || this.state.health.temperature.result < 15 ?
+                    <Widget02 header="Temperature" mainText="Status: Danger" icon="fa fa-thermometer-full" color="danger" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />:
+                    <Widget02 header="Temperature" mainText="Status: Good" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
+                  }
                 </Col></Row>
                 <Row><Col xs="12">
-                  <Widget02 header="Air Quality" mainText="Status: OK" icon="carbonMonoxide.svg" color="info" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
+                  {
+                    this.state.health.gas.result < 5 ?
+                    <Widget02 header="Air Quality" mainText="Status: Danger" icon="carbonMonoxide.svg" color="danger" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />:
+                    <Widget02 header="Air Quality" mainText="Status: Good" icon="carbonMonoxide.svg" color="primary" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
+                  }
                 </Col></Row>
                 <Row><Col xs="12">
-                  <Widget02 header="Motion" mainText="Status: OK" icon="handWaving" color="warning" value={this.state.health.motion.result} footer link="#/status-history/motion" />
+                  <Widget02 header="Motion" mainText="Status: Good" icon="handWaving" color="primary" value={this.state.health.motion.result} footer link="#/status-history/motion" />
                 </Col></Row>
                 <Row><Col sm="12">
-                  <Widget02 header="Humidity" mainText="Status: OK" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
+                  {
+                    this.state.health.humidity.result > 50?
+                    <Widget02 header="Humidity" mainText="Status: Danger" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />:
+                    <Widget02 header="Humidity" mainText="Status: Good" icon="humidity" color="primary" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
+                  }
                 </Col></Row>
               </Col>
               :

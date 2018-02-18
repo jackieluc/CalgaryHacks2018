@@ -74,8 +74,18 @@ class Widget02 extends Component {
     const paddingLeft = {
       padding: "0 0 0 1rem",
     }
+
+    let danger;
+    if (color ==="danger"){
+      danger ={
+        color:"red",
+        borderColor:"red",
+      }
+    }else{
+      danger = {}
+    }
     return (
-      <Card>
+      <Card style={danger}>
         <CardBody className={ card.classes } {...attributes} style={paddingLeft}>
           <Row>
             <Col xs ="6" style={{padding: "0.5rem 1.5rem"}}>
@@ -85,7 +95,7 @@ class Widget02 extends Component {
             <Col xs ="3">
               { blockIcon(card.icon) }
             </Col>
-            <Col xs ="3" style={{padding: "1rem 0.5rem", fontSize:"2em"}}>
+            <Col xs ="3" style={{padding: "1rem 0.5rem", fontSize:"2rem"}}>
               {value.toString().replace(/^[a-z]/, letter => letter.toUpperCase() )}{ header === "Humidity"? <span style={{fontSize : "1rem"}}>%</span>: null}{ header === "Temperature"? <span style={{fontSize : "1rem"}}>°C</span>: null}
             </Col>
           </Row>
