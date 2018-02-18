@@ -14,11 +14,22 @@ class Header extends Component {
 
   constructor(props) {
     super(props);
+
+    this.state = {
+      isCollapsed: false,
+      currentChevronIcon: 'fa fa-chevron-left',
+    };
+    this.sidebarToggle = this.sidebarToggle.bind(this);
   }
 
   sidebarToggle(e) {
     e.preventDefault();
     document.body.classList.toggle('sidebar-hidden');
+    const chevronIcon = this.state.isCollapsed ? 'fa fa-chevron-left' : 'fa fa-chevron-right';
+    this.setState({ 
+      isCollapsed: !this.state.isCollapsed,
+      currentChevronIcon: chevronIcon,
+    });
   }
 
   sidebarMinimize(e) {
@@ -29,17 +40,22 @@ class Header extends Component {
   mobileSidebarToggle(e) {
     e.preventDefault();
     document.body.classList.toggle('sidebar-mobile-show');
+    const chevronIcon = this.state.isCollapsed ? 'fa fa-chevron-left' : 'fa fa-chevron-right';
+    this.setState({ 
+      isCollapsed: !this.state.isCollapsed,
+      currentChevronIcon: chevronIcon,
+    });
   }
 
   render() {
     return (
       <header className="app-header navbar">
         <NavbarToggler className="d-lg-none" onClick={this.mobileSidebarToggle}>
-          <span className="navbar-toggler-icon"></span>
+          <span className={this.state.currentChevronIcon}></span>
         </NavbarToggler>
         <NavbarBrand href="#"></NavbarBrand>
         <NavbarToggler className="d-md-down-none" onClick={this.sidebarToggle}>
-          <span className="navbar-toggler-icon"></span>
+          <span className={this.state.currentChevronIcon}></span>
         </NavbarToggler>
         <Nav className="d-md-down-none" navbar>
           <NavItem className="px-3">
