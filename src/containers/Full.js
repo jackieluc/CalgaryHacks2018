@@ -7,6 +7,7 @@ import Breadcrumb from '../components/Breadcrumb';
 import Footer from '../components/Footer';
 
 import Dashboard from '../views/Dashboard/';
+import StatusHistory from '../views/StatusHistory';
 
 import Colors from '../views/Theme/Colors/';
 import Typography from '../views/Theme/Typography/';
@@ -92,6 +93,7 @@ class Full extends Component {
                 <Route path="/notifications/modals" name="Modals" component={Modals}/>
                 <Route path="/widgets" name="Widgets" component={Widgets}/>
                 <Route path="/charts" name="Charts" component={Charts}/>
+                <Route path="/status-history" name="Status History" component={StatusHistory}/>
                 <Redirect from="/" to="/dashboard"/>
               </Switch>
             </Container>

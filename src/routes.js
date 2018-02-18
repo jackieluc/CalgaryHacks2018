@@ -24,6 +24,7 @@ const routes = {
   '/buttons/button-groups': 'Button Groups',
   '/charts': 'Charts',
   '/dashboard': 'Dashboard',
+  '/status-history': 'Status History',
   '/icons': 'Icons',
   '/icons/flags': 'Flags',
   '/icons/font-awesome': 'Font Awesome',
