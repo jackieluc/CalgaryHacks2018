@@ -74,8 +74,18 @@ class Widget02 extends Component {
     const paddingLeft = {
       padding: "0 0 0 1rem",
     }
+
+    let danger;
+    if (color ==="danger"){
+      danger ={
+        color:"red",
+        borderColor:"red",
+      }
+    }else{
+      danger = {}
+    }
     return (
-      <Card>
+      <Card style={danger}>
         <CardBody className={ card.classes } {...attributes} style={paddingLeft}>
           <Row>
             <Col xs ="6" style={{padding: "0.5rem 1.5rem"}}>

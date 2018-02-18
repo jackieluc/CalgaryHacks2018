@@ -381,7 +381,7 @@ class Dashboard extends Component {
             {(new Date().getHours()) > 8 && (new Date().getHours()) < 18 ? <img src={day}  style= {houseIcon}/> : <img src={night}  style= {houseIcon}/> }
             {this.state && this.state.health && this.state.health.temperature.result < 15? <img src={cold}  style= {houseIcon}/> :null }
             {this.state && this.state.health && this.state.health.temperature.result > 27? <img src={hot}  style= {houseIcon}/> :null }
-            {this.state && this.state.health && this.state.health.gas.result > 15? <img src={smoke} style={houseIcon}/> : null }
+            {this.state && this.state.health && this.state.health.gas.result < 5? <img src={smoke} style={houseIcon}/> : null }
             {this.state && this.state.health && this.state.health.humidity.result > 50 ? <img src={flood}  style= {houseIcon}/> : null }
           </Col>
 
@@ -389,16 +389,28 @@ class Dashboard extends Component {
             !this.state.health.error ? 
               <Col xs="12" sm="4">
                 <Row><Col xs="12">
-                  <Widget02 header="Temperature" mainText="Status: OK" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
+                  {
+                    this.state.health.temperature.result > 27 || this.state.health.temperature.result < 15 ?
+                    <Widget02 header="Temperature" mainText="Status: Danger" icon="fa fa-thermometer-full" color="danger" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />:
+                    <Widget02 header="Temperature" mainText="Status: Good" icon="fa fa-thermometer-full" color="primary" value={this.state.health.temperature.result.toFixed(0)} footer link="#/status-history/temperature" />
+                  }
                 </Col></Row>
                 <Row><Col xs="12">
-                  <Widget02 header="Air Quality" mainText="Status: OK" icon="carbonMonoxide.svg" color="info" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
+                  {
+                    this.state.health.gas.result < 5 ?
+                    <Widget02 header="Air Quality" mainText="Status: Danger" icon="carbonMonoxide.svg" color="danger" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />:
+                    <Widget02 header="Air Quality" mainText="Status: Good" icon="carbonMonoxide.svg" color="primary" value={this.state.health.gas.result.toFixed(2)} footer link="#/status-history/air-quality" />
+                  }
                 </Col></Row>
                 <Row><Col xs="12">
-                  <Widget02 header="Motion" mainText="Status: OK" icon="handWaving" color="warning" value={this.state.health.motion.result} footer link="#/status-history/motion" />
+                  <Widget02 header="Motion" mainText="Status: Good" icon="handWaving" color="primary" value={this.state.health.motion.result} footer link="#/status-history/motion" />
                 </Col></Row>
                 <Row><Col sm="12">
-                  <Widget02 header="Humidity" mainText="Status: OK" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
+                  {
+                    this.state.health.humidity.result > 50?
+                    <Widget02 header="Humidity" mainText="Status: Danger" icon="humidity" color="danger" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />:
+                    <Widget02 header="Humidity" mainText="Status: Good" icon="humidity" color="primary" value={this.state.health.humidity.result.toFixed(0)} footer link="#/status-history/humidity" />
+                  }
                 </Col></Row>
               </Col>
               :
