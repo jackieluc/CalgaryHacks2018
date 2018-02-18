@@ -1,36 +1,32 @@
 import React,{Component} from "react";
 import {Row,Col} from "reactstrap";
-
+import logo from "../../../../public/img/logo.png"
 
 class About extends Component{
     render(){
         
         return(
-            <div>
+            <div style={{paddingRight: "20px", paddingLeft: "20px"}}>
                 <Row>
                     <Col xs="12">
-                        <h1>About</h1>
+                        <h1 style={{textAlign:"center", paddingBottom: "30px"}}>About Us <hr></hr> </h1>
                     </Col>
                 </Row> 
-                <Row>
+                <Row style={{paddingBottom: "30px"}}>
+                    <Col xs="12" sm="4">
+                        <img src={logo} style={{display: "block", marginLeft: "auto", marginRight: "auto", paddingLeft:"2%", width: "50%", maxWidth: 140, paddingTop:"5%"}} alt="Logo" />
+                    </Col>
                     <Col xs="12" sm="8">
-                        <h2>Purpose</h2>
-
+                        <h2 style={{textAlign:"center", paddingBottom: "20px"}}>Purpose</h2>
                         <p>
-                            Welcome home. 
-                            <br></br>
-                            Thus over 24 hours we have built an IOT device that can protect your property. With sensors such 
-                            as temperature, humidity, air quality and motion you can keep track of your home. Furthermore, 
-                            we have created a dashboard website to view the status of your home. Thus, you can keep tabs on 
-                            your house when you are away, or renting on Airbnb. Lastly the server keeps track of the history 
-                            of the sensors, which can be used to diagnose problems occurring the house such as a water leak, 
-                            or a faulty thermostat.
+                            Our homes are one of the most valuable financial assets in our lives. They hold uncountable precious memories and we work hard to make our homes our own.
+                            <br></br><br></br>
+                            With a growth in consumer travel and popularization of home rental applications such as AirBnB, homeowners are frequently out of the house and stuck having to hire a physical house sitters or leave their house unattended.
+                            This can create risks such as fires, burglary, flooding and gas leaks. Unmonitored tenants can misuse properties, and potentially damage your property value. For these problems, we built housesitter.tech.
                         </p>
                     </Col>
                 </Row>
-            
-                
-
+        
                 <h2>Dashboard</h2>
                 <h3>Real time status</h3>
                 <Row>
