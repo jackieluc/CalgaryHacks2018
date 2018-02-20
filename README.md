@@ -39,8 +39,8 @@ House Guard is a home monitoring system equipped with several sensors used to de
 [Presentation Slides](https://docs.google.com/presentation/d/1sZKT3lzK22bM52ph5lu6ipJ2u68ow6KTANVOMZ1ntkU/edit?usp=sharing) - Eric Ma, Micheal Friesen</br>
 [Particle Electron](https://github.com/MikenIke135/hackathon2018_particle_code) - Eric Ma, Micheal Friesen</br>
 [Poller for API](https://github.com/krhancoc/poller) - Kenneth Ryan Hancock</br>
-[API](https://github.com/krhancoc/hackathon-api) - Kenneth Ryan Hancock</br>
-[React Front-end](https://github.com/jackieluc/HouseGuard) - Jackie Luc, Kourosh Banaeianzadeh, Micheal Friesen</br>
+[Back-End API](https://github.com/krhancoc/hackathon-api) - Kenneth Ryan Hancock</br>
+[Front-End Dashboard](https://github.com/jackieluc/HouseGuard) - Jackie Luc, Kourosh Banaeianzadeh, Micheal Friesen</br>
 
 
 ### **Special Thanks**
