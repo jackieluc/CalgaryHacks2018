@@ -1,6 +1,6 @@
 # House Guard
 
-# 1st Place Winner at [CalgaryHacks 2018](https://calgaryhacks-2018.devpost.com/), 24-48 Hour Hackathon
+# 1st Place Winner at [CalgaryHacks 2018](https://calgaryhacks-2018.devpost.com/), 24 Hour Hackathon
 
 ## Connect with the team!
 Eric Ma - [GitHub](https://github.com/ericsiyuanma) - [LinkedIn](https://www.linkedin.com/in/eric-ma-221a7b112/)</br>
@@ -13,11 +13,15 @@ Micheal Friesen - [GitHub](https://github.com/MikenIke135) - [LinkedIn](https://
 **Long Range (Cellular) Internet of Things (IoT)**
 
 ## Purpose
-Our homes are one of the most valuable financial assets we hold in our lives. They house countless precious memories and we invest a lot of effort to attain and maintain our homes, and even go the extra length make it personable and welcoming. You own a cabin or a cottage that you wish you could visit multiple times during the year, rather than once a summer. You may possibly arrive in the start of your summer vacation away from the busy city life to find yourself with an array of problems with your cabin, and you wished you had known of these issues earlier, so that these issues could have been addressed before your vacation started. House Guard is a home monitoring system equipped with several sensors to detect and alert any problems to you using cellular data. House Guard can put your mind at peace, displaying the health status of your home's temperature, air quality, humidity, and detect motion, in a mobile-friendly and real-time dashboard. The dashboard also enables you to analyze the data of your home, which can assist you in making informed decisions, such as, seeing areas to improve efficiencies or predict problems. In an event where a sensor is detecting abnormal activity, it will send an alert to you through a text message. You can easily configure the threshold of each sensors to configure when an alert needs to be sent. You can also provide a subscription to these alerts, enabling notifications to your plumber if your humidity is abnormally high, or the fire department if your house is abnormally hot. There is no more need for you to spend lengths of time to physically travel to check the status of your beloved remote homes.
+Our homes are one of the most valuable financial assets we possess. They house countless precious memories and we invest a lot of effort to attain and maintain our homes. We even go the extra mile to make it personable and welcoming. 
+
+You own a cabin or a cottage that you wish you could visit multiple times during the year, rather than once a summer. You arrive at the start of your summer vacation hoping to escape from the busy city life. To your surprise and disapointment, you find yourself a flooded basement and a broken window. You wished you had known of these issues earlier, so that these issues could have been addressed before your vacation started. 
+
+House Guard is a home monitoring system equipped with several sensors used to detect and alert you of any problems using cellular data. House Guard can bring you peace of mind by displaying a health report of your home's temperature, air quality, humidity, and detected motion, in a mobile-friendly and real-time dashboard. This dashboard enables you to analyze the data of your home, which can assist you in making informed decisions about maintaining your home. Know when to fix your sewage backups or leaky pipes, before it's too late. In an event where a sensor is detecting abnormal activity, it will send an alert to you via text message. You can easily configure the threshold of each sensor to prompt when an alert needs to be sent. You can also provide emergency contacts for these alerts, enabling notifications to your plumber if your humidity is abnormally high, or the fire department if your house is detecting smoke or gas leaks. There is no longer a need for you to waste a large amount of time to physically verify the status of your beloved remote homes.
 
 Organized slides of our presentation to the judges in the final round can be found [here](https://docs.google.com/presentation/d/1sZKT3lzK22bM52ph5lu6ipJ2u68ow6KTANVOMZ1ntkU/edit?usp=sharing).
 
-#### From this 24-48 hour hackathon, we had lots of fun and little sleep. This was a very exhilirating way to create memorable experiences and challenge, not only your technical skills, but also your design, business, and soft skills.
+#### From this 24 hour hackathon, we had lots of fun and little sleep (we were up ~40 hours including presentations). This was an exhilirating way to create memorable experiences and challenge, not only our technical skills, but also our design, business, and soft skills.
 
 ## Built With
 **Particle Electron + Sensor Kit**, provided by TELUS for the hack
@@ -29,6 +33,7 @@ Organized slides of our presentation to the judges in the final round can be fou
 **Node.js**</br>
 **Hapi.js**</br>
 **React**</br>
+**CoreUI (Open Source React Admin Template)**</br>
 **Twillio API**</br>
 
 ## Resources
