@@ -32,7 +32,7 @@ Organized slides of our presentation to the judges in the final round can be fou
 **Twillio API**</br>
 
 ## Resources
-[Devpost](https://devpost.com/software/hackathon2018_particle_code)
+[Devpost](https://devpost.com/software/hackathon2018_particle_code)</br>
 [React Front-end](https://github.com/jackieluc/HouseGuard)</br>
 [Particle Electron](https://github.com/MikenIke135/hackathon2018_particle_code)
 
