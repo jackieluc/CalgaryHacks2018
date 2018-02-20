@@ -9,7 +9,7 @@ Kenneth Ryan Hancock - [GitHub](https://github.com/krhancoc) - [LinkedIn](https:
 Kourosh Banaeianzadeh - [GitHub](https://github.com/MikenIke135) - [LinkedIn](https://www.linkedin.com/in/kourosh-banaeianzadeh-95899412a/)</br>
 Micheal Friesen - [GitHub](https://github.com/MikenIke135) - [LinkedIn](https://www.linkedin.com/in/micheal-friesen/)</br>
 
-## Topic
+## Theme
 **Long Range (Cellular) Internet of Things (IoT)**
 
 ## Purpose
