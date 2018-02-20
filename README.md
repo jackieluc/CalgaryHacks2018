@@ -17,6 +17,8 @@ Our homes are one of the most valuable financial assets we hold in our lives. Th
 
 Organized slides of our presentation to the judges in the final round can be found [here](https://docs.google.com/presentation/d/1sZKT3lzK22bM52ph5lu6ipJ2u68ow6KTANVOMZ1ntkU/edit?usp=sharing).
 
+#### From this 24-48 hour hackathon, we had lots of fun and little sleep. This was a very exhilirating way to create memorable experiences and challenge, not only your technical skills, but also your design, business, and soft skills.
+
 ## Built With
 **Particle Electron + Sensor Kit**, provided by TELUS for the hack
 - using TELUS SIM Card, Gas sensor, Soil humidity and temperature sensor, PIR motion sensor, and Waterproof temperature sensor
@@ -32,8 +34,6 @@ Organized slides of our presentation to the judges in the final round can be fou
 ## Repositories
 [React Front-end](https://github.com/jackieluc/CalgaryHacks2018)</br>
 [Particle Electron](https://github.com/MikenIke135/hackathon2018_particle_code)
-
-#### From this 24-48 hour hackathon, we had lots of fun and little sleep. This was a very exhilirating way to create memorable experiences and challenge, not only your technical skills, but also your design, business, and soft skills.
 
 ### **Special Thanks**
 Computer Science Undergraduate Society</br>
