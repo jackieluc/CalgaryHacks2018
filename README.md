@@ -19,8 +19,6 @@ You own a cabin or a cottage that you wish you could visit multiple times during
 
 House Guard is a home monitoring system equipped with several sensors used to detect and alert you of any problems using cellular data. House Guard can bring you peace of mind by displaying a health report of your home's temperature, air quality, humidity, and detected motion, in a mobile-friendly and real-time dashboard. This dashboard enables you to analyze the data of your home, which can assist you in making informed decisions about maintaining your home. Know when to fix your sewage backups or leaky pipes, before it's too late. In an event where a sensor is detecting abnormal activity, it will send an alert to you via text message. You can easily configure the threshold of each sensor to prompt when an alert needs to be sent. You can also provide emergency contacts for these alerts, enabling notifications to your plumber if your humidity is abnormally high, or the fire department if your house is detecting smoke or gas leaks. There is no longer a need for you to waste a large amount of time to physically verify the status of your beloved remote homes.
 
-Organized slides of our presentation to the judges in the final round can be found [here](https://docs.google.com/presentation/d/1sZKT3lzK22bM52ph5lu6ipJ2u68ow6KTANVOMZ1ntkU/edit?usp=sharing).
-
 #### From this 24 hour hackathon, we had lots of fun and little sleep (we were up ~40 hours including presentations). This was an exhilirating way to create memorable experiences and challenge, not only our technical skills, but also our design, business, and soft skills.
 
 ## Built With
@@ -38,10 +36,11 @@ Organized slides of our presentation to the judges in the final round can be fou
 
 ## Resources
 [Devpost](https://devpost.com/software/hackathon2018_particle_code)</br>
-[Particle Electron](https://github.com/MikenIke135/hackathon2018_particle_code)</br>
-[Poller for API](https://github.com/krhancoc/poller)</br>
-[API](https://github.com/krhancoc/hackathon-api)</br>
-[React Front-end](https://github.com/jackieluc/HouseGuard)</br>
+[Presentation Slides](https://docs.google.com/presentation/d/1sZKT3lzK22bM52ph5lu6ipJ2u68ow6KTANVOMZ1ntkU/edit?usp=sharing) - Eric Ma, Micheal Friesen</br>
+[Particle Electron](https://github.com/MikenIke135/hackathon2018_particle_code) - Eric Ma, Micheal Friesen</br>
+[Poller for API](https://github.com/krhancoc/poller) - Kenneth Ryan Hancock</br>
+[API](https://github.com/krhancoc/hackathon-api) - Kenneth Ryan Hancock</br>
+[React Front-end](https://github.com/jackieluc/HouseGuard) - Jackie Luc, Kourosh Banaeianzadeh, Micheal Friesen</br>
 
 
 ### **Special Thanks**
