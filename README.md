@@ -32,7 +32,7 @@ Organized slides of our presentation to the judges in the final round can be fou
 **Twillio API**</br>
 
 ## Repositories
-[React Front-end](https://github.com/jackieluc/CalgaryHacks2018)</br>
+[React Front-end](https://github.com/jackieluc/HouseGuard)</br>
 [Particle Electron](https://github.com/MikenIke135/hackathon2018_particle_code)
 
 ### **Special Thanks**
