@@ -1,4 +1,4 @@
-# House Guard
+# House Guard <img src="https://github.com/jackieluc/HouseGuard/blob/master/public/img/logo.png" width="40" style="padding: 0" title="HouseGuard Logo">
 
 # 1st Place Winner at [CalgaryHacks 2018](https://calgaryhacks-2018.devpost.com/), 24 Hour Hackathon
 
@@ -20,6 +20,16 @@ You own a cabin or a cottage that you wish you could visit multiple times during
 House Guard is a home monitoring system equipped with several sensors used to detect and alert you of any problems using cellular data. House Guard can bring you peace of mind by displaying a health report of your home's temperature, air quality, humidity, and detected motion, in a mobile-friendly and real-time dashboard. This dashboard enables you to analyze the data of your home, which can assist you in making informed decisions about maintaining your home. Know when to fix your sewage backups or leaky pipes, before it's too late. In an event where a sensor is detecting abnormal activity, it will send an alert to you via text message. You can easily configure the threshold of each sensor to prompt when an alert needs to be sent. You can also provide emergency contacts for these alerts, enabling notifications to your plumber if your humidity is abnormally high, or the fire department if your house is detecting smoke or gas leaks. There is no longer a need for you to waste a large amount of time to physically verify the status of your beloved remote homes.
 
 #### From this 24 hour hackathon, we had lots of fun and little sleep (we were up ~40 hours including presentations). This was an exhilirating way to create memorable experiences and challenge, not only our technical skills, but also our design, business, and soft skills.
+
+<h3 align="center">Dashboard</h3>
+<p align="center">
+  <img src="https://github.com/jackieluc/HouseGuard/blob/master/public/img/dashboard.png" title="HouseGuard Dashboard">
+</p>
+
+<h3 align="center">Status History</h3>
+<p align="center">
+  <img src="https://github.com/jackieluc/HouseGuard/blob/master/public/img/status-history.png" title="HouseGuard Dashboard">
+</p>
 
 ## Built With
 **Particle Electron + Sensor Kit**, provided by TELUS for the hack
