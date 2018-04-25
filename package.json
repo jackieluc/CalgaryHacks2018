@@ -1,12 +1,4 @@
 {
-<<<<<<< HEAD
-  "name": "@coreui/react",
-  "version": "1.0.10",
-  "description": "Open Source Bootstrap Admin Template",
-  "author": "Łukasz Holeczek",
-  "homepage": "http://coreui.io",
-  "copyright": "Copyright 2018 creativeLabs Łukasz Holeczek",
-=======
   "name": "calgaryhacks2018",
   "version": "0.1.0",
   "description": "CalgaryHacks 2018",
@@ -36,7 +28,6 @@
   },
   "author": "Jackie Luc, Kourosh Banaeianzadeh, Eric Ma, Kenneth R Hancock, Micheal Friesen",
   "emails": "jaluc@ucalgary.ca, kourosh.banaeianzade@ucalgary.ca, ericsiyuanma@gmail.com, kryan.hancock@gmail.com, michealfriesen@gmail.com",
->>>>>>> 5119fbadbffec2d05f9ce70615884fba88c9a7b0
   "license": "MIT",
   "private": true,
   "devDependencies": {
