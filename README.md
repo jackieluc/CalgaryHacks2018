@@ -7,7 +7,7 @@ Eric Ma - [GitHub](https://github.com/ericsiyuanma) - [LinkedIn](https://www.lin
 Jackie Luc - [GitHub](https://github.com/jackieluc) - [LinkedIn](https://www.linkedin.com/in/jackieluc/)</br>
 Kenneth Ryan Hancock - [GitHub](https://github.com/krhancoc) - [LinkedIn](https://www.linkedin.com/in/krhancoc/)</br>
 Kourosh Banaeianzadeh - [GitHub](https://github.com/MikenIke135) - [LinkedIn](https://www.linkedin.com/in/kourosh-banaeianzadeh-95899412a/)</br>
-Micheal Friesen - [GitHub](https://github.com/MikenIke135) - [LinkedIn](https://www.linkedin.com/in/micheal-friesen/)</br>
+Micheal Friesen - [GitHub](https://github.com/michealfriesen) - [LinkedIn](https://www.linkedin.com/in/micheal-friesen/)</br>
 
 ## Theme
 **Long Range (Cellular) Internet of Things (IoT)**
